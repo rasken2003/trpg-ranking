@@ -66,15 +66,28 @@
  */
 class DATABASE_CONFIG {
 
-	public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'trpg_ranking',
-		'prefix' => '',
-		//'encoding' => 'utf8',
+	public $default = null;
+
+	public $development = array(
+			'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'localhost',
+			'login' => 'root',
+			'password' => '',
+			'database' => 'trpg_ranking',
+			'prefix' => '',
+			//'encoding' => 'utf8',
+	);
+
+	public $production = array(
+			'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'production_host',
+			'login' => 'root',
+			'password' => '',
+			'database' => 'trpg_ranking',
+			'prefix' => '',
+			//'encoding' => 'utf8',
 	);
 
 	public $test = array(
@@ -87,4 +100,16 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+
+	public function __construct() {
+		$serverName = $_SERVER['SERVER_NAME'];
+		switch ($serverName) {
+			case 'www.example.com':
+				$this->default = $this->production;
+				break;
+			default:
+				$this->default = $this->development;
+				break;
+		}
+	}
 }
