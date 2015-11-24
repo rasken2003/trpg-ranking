@@ -33,10 +33,10 @@
 					<div class="home_trpg_item_left">
 						<div class="trpg_image">
 							<?php
-								echo($this->Html->Image(
+								echo($this->Html->image(
 									'/home/image/'.$trpgSystem['TrpgSystem']['id'],
 									array(
-										'url' => '/home',
+										'url' => '/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id'],
 										'width' => '100',
 										'alt' => $trpgSystem['TrpgSystem']['title'],
 									)
@@ -46,7 +46,12 @@
 					</div>
 					<div class="home_trpg_item_center">
 						<div class="trpg_title">
-							<a href="trpg_detail.html"><?php echo($trpgSystem['TrpgSystem']['title']); ?></a>
+							<?php
+								echo($this->Html->link(
+									$trpgSystem['TrpgSystem']['title'],
+									'/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id']
+								));
+							?>
 						</div>
 						<div class="trpg_summary">
 							<?php echo($trpgSystem['TrpgSystem']['summary']); ?>
@@ -61,7 +66,7 @@
 						</div>
 						<div class="trpg_evaluation_image">
 							<?php
-								echo($this->Html->Image(
+								echo($this->Html->image(
 									'star'.floor($trpgSystem['TrpgSystem']['evaluation_value']).'.png',
 									array(
 										'width' => '100',
