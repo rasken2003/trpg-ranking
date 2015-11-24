@@ -79,7 +79,7 @@ input[name=searchkeyword] {
 #nav {
 	margin: 10px 0 0 0;
 	padding: 15px 30px 10px 30px;
-	background-image: url(../images/menu-bg.png);
+	background-image: url(../img/menu-bg.png);
 }
 #nav li {
 	display: inline;
