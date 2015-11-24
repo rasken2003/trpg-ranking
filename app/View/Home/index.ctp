@@ -32,7 +32,16 @@
 				<div class="home_trpg_item">
 					<div class="home_trpg_item_left">
 						<div class="trpg_image">
-							<a href="trpg_detail.html"><img src="images/sword_world20.jpg" width="100" alt="ソードワールド2.0"></a>
+							<?php
+								echo($this->Html->Image(
+									'/home/image/'.$trpgSystem['TrpgSystem']['id'],
+									array(
+										'url' => '/home',
+										'width' => '100',
+										'alt' => $trpgSystem['TrpgSystem']['title'],
+									)
+								));
+							?>
 						</div>
 					</div>
 					<div class="home_trpg_item_center">

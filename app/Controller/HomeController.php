@@ -9,4 +9,9 @@ class HomeController extends AppController {
 		$trpgSystems = $this->TrpgSystem->find('all', $options);
 		$this->set('trpgSystems', $trpgSystems);
 	}
+
+	public function image($id) {
+		$trpgSystem = $this->TrpgSystem->findById($id);
+		echo $trpgSystem['TrpgSystem']['image'];
+	}
 }
