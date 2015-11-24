@@ -28,6 +28,7 @@
 			<!-- ライト -->
 			<div class="home_right">
 				<h2 id="ranking">ランキング</h2>
+				<?php foreach ($trpgSystems as $trpgSystem): ?>
 				<div class="home_trpg_item">
 					<div class="home_trpg_item_left">
 						<div class="trpg_image">
@@ -36,111 +37,36 @@
 					</div>
 					<div class="home_trpg_item_center">
 						<div class="trpg_title">
-							<a href="trpg_detail.html">ソードワールド2.0</a>
+							<a href="trpg_detail.html"><?php echo($trpgSystem['TrpgSystem']['title']); ?></a>
 						</div>
 						<div class="trpg_summary">
-							ラクシアと呼ばれる世界を舞台にしたファンタジーRPG。
+							<?php echo($trpgSystem['TrpgSystem']['summary']); ?>
 						</div>
 						<div class="trpg_category">
-							<a href="introduction_fantasy.html">ファンタジー</a>
+							<a href="introduction_fantasy.html"><?php echo($trpgSystem['Category']['name']); ?></a>
 						</div>
 					</div>
 					<div class="home_trpg_item_right">
 						<div class="trpg_rank">
-							第1位
+							第<?php echo($trpgSystem['TrpgSystem']['rank']); ?>位
 						</div>
 						<div class="trpg_evaluation_image">
 							<?php
 								echo($this->Html->Image(
-									'star5.png',
+									'star'.floor($trpgSystem['TrpgSystem']['evaluation_value']).'.png',
 									array(
 										'width' => '100',
 										'height' => '20',
-										'alt' => '☆5',
+										'alt' => '☆'.floor($trpgSystem['TrpgSystem']['evaluation_value']),
 									)
 								));
 							?>
 						</div>
 						<div class="trpg_evaluation_value">
-							5.00
+							<?php echo($trpgSystem['TrpgSystem']['evaluation_value']); ?>
 						</div>
 					</div>
 				</div>
-				<div class="home_trpg_item">
-					<div class="home_trpg_item_left">
-						<div class="trpg_image">
-							<a href="trpg_detail_cthulhu.html"><img src="images/CALL_OF_CTHULHU.jpg" width="100" alt="クトゥルフ神話 TRPG"></a>
-						</div>
-					</div>
-					<div class="home_trpg_item_center">
-						<div class="trpg_title">
-							<a href="trpg_detail_cthulhu.html">クトゥルフ神話 TRPG</a>
-						</div>
-						<div class="trpg_summary">
-							「クトゥルフ神話」を題材とした、ホラーTRPG。
-						</div>
-						<div class="trpg_category">
-							<a href="introduction_horror.html">ホラー</a>
-						</div>
-					</div>
-					<div class="home_trpg_item_right">
-						<div class="trpg_rank">
-							第2位
-						</div>
-						<div class="trpg_evaluation_image">
-							<?php
-								echo($this->Html->Image(
-									'star4.png',
-									array(
-										'width' => '100',
-										'height' => '20',
-										'alt' => '☆4',
-									)
-								));
-							?>
-						</div>
-						<div class="trpg_evaluation_value">
-							4.50
-						</div>
-					</div>
-				</div>
-				<div class="home_trpg_item">
-					<div class="home_trpg_item_left">
-						<div class="trpg_image">
-							<a href="trpg_detail_gurps.html"><img src="images/GURPS.jpg" width="100" alt="ガープス"></a>
-						</div>
-					</div>
-					<div class="home_trpg_item_center">
-						<div class="trpg_title">
-							<a href="trpg_detail_gurps.html">ガープス</a>
-						</div>
-						<div class="trpg_summary">
-							汎用テーブルトークRPGのルール。
-						</div>
-						<div class="trpg_category">
-							<a href="introduction_general.html">汎用</a>
-						</div>
-					</div>
-					<div class="home_trpg_item_right">
-						<div class="trpg_rank">
-							第3位
-						</div>
-						<div class="trpg_evaluation_image">
-							<?php
-								echo($this->Html->Image(
-									'star3.png',
-									array(
-										'width' => '100',
-										'height' => '20',
-										'alt' => '☆3',
-									)
-								));
-							?>
-						</div>
-						<div class="trpg_evaluation_value">
-							3.50
-						</div>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 			<!-- ライト ここまで -->
