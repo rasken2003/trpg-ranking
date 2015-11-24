@@ -21,9 +21,9 @@
 						'logo.png',
 						array(
 							'url' => '/home',
-							'alt' => 'TRPGランキング',
 							'width' => '541',
-							'height' => '84'
+							'height' => '84',
+							'alt' => 'TRPGランキング',
 						)
 					));
 				?>
