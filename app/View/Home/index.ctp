@@ -50,7 +50,16 @@
 							第1位
 						</div>
 						<div class="trpg_evaluation_image">
-							<img src="images/star5.png" width="100" height="20" alt="☆5">
+							<?php
+								echo($this->Html->Image(
+									'star5.png',
+									array(
+										'width' => '100',
+										'height' => '20',
+										'alt' => '☆5',
+									)
+								));
+							?>
 						</div>
 						<div class="trpg_evaluation_value">
 							5.00
@@ -79,7 +88,16 @@
 							第2位
 						</div>
 						<div class="trpg_evaluation_image">
-							<img src="images/star4.png" width="100" height="20" alt="☆4">
+							<?php
+								echo($this->Html->Image(
+									'star4.png',
+									array(
+										'width' => '100',
+										'height' => '20',
+										'alt' => '☆4',
+									)
+								));
+							?>
 						</div>
 						<div class="trpg_evaluation_value">
 							4.50
@@ -108,7 +126,16 @@
 							第3位
 						</div>
 						<div class="trpg_evaluation_image">
-							<img src="images/star3.png" width="100" height="20" alt="☆3">
+							<?php
+								echo($this->Html->Image(
+									'star3.png',
+									array(
+										'width' => '100',
+										'height' => '20',
+										'alt' => '☆3',
+									)
+								));
+							?>
 						</div>
 						<div class="trpg_evaluation_value">
 							3.50
