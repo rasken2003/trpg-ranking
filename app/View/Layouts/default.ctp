@@ -3,15 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="Keywords" content="TRPG,ランキング">
+<meta name="Description" content="TRPGのシステムを紹介しています。また、ユーザの評価をもとに、TRPGのシステムをランキング化しています。TRPGのシステムを検索したり、カテゴリごとに一覧表示したりすることができます。
+さらに、TRPGに関するニュースを掲載しています。">
 <title>TRPGランキング</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<?php
+	echo $this->Html->css('style');
+?>
 </head>
 <body>
 <div class="wrapper">
 	<!-- ヘッダー -->
 	<div id="logo_login">
 		<div id="logo_login_center">
-			<h1 id="logo"><a href="index.html"><img src="images/logo.png" width="541" height="84" alt="TRPGランキング"></a></h1>
+			<h1 id="logo">
+				<?php
+					echo($this->Html->Image(
+						'logo.png',
+						array(
+							'url' => '/home',
+							'alt' => 'TRPGランキング',
+							'width' => '541',
+							'height' => '84'
+						)
+					));
+				?>
+			</h1>
 		</div>
 		<div id="logo_login_right">
 			<ul id="login">

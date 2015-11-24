@@ -1,0 +1,294 @@
+@charset "UTF-8";
+
+/* すべてのWebページに適用される */
+/*
+* {
+	outline: 1px solid #ff0000;
+}
+*/
+body {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	background-color: #fffff0;
+}
+.wrapper {
+	margin: 0 auto 0 auto;
+	width: 900px;
+}
+a:link {
+	color: #ffa500;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:visited {
+	color: #ffa500;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:hover {
+	color: #8b4513;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:active {
+	color: #ffd700;
+	text-decoration: none;
+	font-weight: bold;
+}
+h1 {
+	margin: 30px 0 0 0;
+	padding: 0 0 0 0;
+	line-height; 0;
+	text-align: center;
+}
+h2 {
+	color: #008000;
+	font-size: 12px;
+	border-bottom: 2px solid #008000;
+	margin: 20px 0px 10px 0px;
+	padding: 10px 10px 0px 10px;
+}
+#logo_login {
+	overflow: hidden;
+	zoom: 1;
+}
+#logo_login_center {
+	float: left;
+}
+#logo_login_right {
+	float: left;
+	margin: 30px 0 0 0;
+	padding: 50px 0 0 0;
+}
+#login {
+	margin: 0 0 0 0;
+/* 第1弾 */
+	visibility: hidden;
+}
+#login li {
+	list-style-type: none;
+}
+#search {
+	text-align: center;
+/* 第1弾 */
+	visibility: hidden;
+}
+input[name=searchkeyword] {
+	width: 30em;
+}
+#nav {
+	margin: 10px 0 0 0;
+	padding: 15px 30px 10px 30px;
+	background-image: url(../images/menu-bg.png);
+}
+#nav li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;}
+
+#nav li a:link {
+	color: #f5f3eb;
+	text-decoration: none;
+}
+#nav li a:visited {
+	color: #f5f3eb;
+	text-decoration: none;
+}
+#nav li a:hover {
+	color: #e4dbb9;
+	text-decoration: none;
+}
+#nav li a:active {
+	color: #ffffff;
+	text-decoration: none;
+}
+.left_main {
+	overflow: hidden;
+	zoom: 1;
+}
+.left {
+	float: left;
+	width: 180px;
+	margin: 10px 10px 10px 10px;
+}
+.main {
+	float: left;
+	overflow: hidden;
+	zoom: 1;
+	width: 700px;
+}
+#category {
+	color: #808080;
+	font-size: 14px;
+	border-bottom: 0px;
+	margin: 5px 0px 5px 0px;
+	padding: 0px 0px 0px 0px;
+}
+#category_div {
+	background-color: #f5f5f5;
+	border: 1px solid #d3d3d3;
+}
+#category_items {
+	list-style-type: none;
+	margin: 5px 0px 0px 20px;
+	padding: 0px 0px 0px 0px;
+}
+.news_title {
+	font-size: 20px;
+	padding: 0 0 5px 0;
+}
+.news_summary {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+.news_delivery_time {
+	font-size: 12px;
+	padding: 0 0 5px 0;
+	text-align: right;
+}
+.news_contents {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+.trpg_title {
+	font-size: 20px;
+	padding: 0 0 5px 0;
+}
+.trpg_summary {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+.trpg_category {
+	font-size: 12px;
+	padding: 0 0 5px 0;
+}
+.trpg_rank {
+	font-size: 20px;
+	padding: 0 0 5px 0;
+	text-align: center;
+	font-weight: bold;
+}
+.trpg_evaluation_image {
+	text-align: center;
+}
+.trpg_evaluation_value {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+	text-align: center;
+}
+.trpg_contents {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+.trpg_official_link {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+	text-align: center;
+}
+.trpg_sale_link {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+	text-align: center;
+}
+.review_title {
+	font-size: 20px;
+	padding: 0 0 5px 0;
+}
+.review_evaluation_image {
+	float: left;
+}
+.review_evaluation_value {
+	float: left;
+	font-size: 15px;
+}
+.review_summary {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+.review_reviewer {
+	font-size: 12px;
+	padding: 0 0 5px 0;
+}
+.review_update_date {
+	font-size: 12px;
+	padding: 0 0 5px 0;
+}
+.review_contents {
+	font-size: 15px;
+	padding: 0 0 5px 0;
+}
+img {
+	border-style: none;
+}
+
+/* 個別のスタイル */
+/* index.html */
+.home_center {
+	float: left;
+	width: 330px;
+	margin: 10px 10px 10px 10px;
+}
+.home_right {
+	float: left;
+	width: 330px;
+	margin: 10px 10px 10px 10px;
+}
+.home_news_item {
+	border-bottom: 1px dashed #008000;
+}
+.home_trpg_item {
+	border-bottom: 1px dashed #008000;
+	overflow: hidden;
+	zoom: 1;
+}
+.home_trpg_item_left {
+	float: left;
+	width: 110px;
+}
+.home_trpg_item_center {
+	float: left;
+	width: 110px;
+}
+.home_trpg_item_right {
+	float: left;
+	width: 110px;
+}
+
+/* introduction.html, ranking.html */
+.trpg_item {
+	border-bottom: 1px dashed #008000;
+	overflow: hidden;
+	zoom: 1;
+}
+.trpg_item_left {
+	float: left;
+	width: 110px;
+}
+.trpg_item_center {
+	float: left;
+	width: 480px;
+}
+.trpg_item_right {
+	float: left;
+	width: 110px;
+}
+
+/* news.html */
+.news_item {
+	border-bottom: 1px dashed #008000;
+}
+
+/* trpg_detail.html */
+.trpg_detail_item {
+	overflow: hidden;
+	zoom: 1;
+	padding: 0 0 5px 0;
+}
+.review_item {
+	border-bottom: 1px dashed #008000;
+}
+.review_evaluation {
+	overflow: hidden;
+	zoom: 1;
+	padding: 0 0 5px 0;
+}
