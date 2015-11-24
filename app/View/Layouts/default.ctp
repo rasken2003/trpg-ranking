@@ -77,6 +77,8 @@
 	<div id="footer">
 		<p>&copy;Copyright Rasken. All rights reserved.</p>
 	</div>
+	<!-- 開発中のみ -->
+	<?php echo $this->element('sql_dump'); ?>
 	<!-- フッター ここまで -->
 </div>
 </body>
