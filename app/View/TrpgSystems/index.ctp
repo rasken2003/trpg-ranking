@@ -1,7 +1,7 @@
 			<h2 id="introduction">紹介</h2>
 			<div class="page_count">
-				<?php echo $this->Paginator->counter('ページ {:page} / {:pages}'); ?><br>
 				<?php echo $this->Paginator->counter('全{:count}件中 {:start}件目から{:end}件目（{:current}件）を表示中'); ?><br>
+				<?php echo $this->Paginator->counter('ページ {:page} / {:pages}'); ?><br>
 			</div>
 			<?php foreach ($trpgSystems as $trpgSystem): ?>
 			<div class="trpg_item">
