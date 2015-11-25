@@ -46,8 +46,8 @@
 	</div>
 	<ul id="nav">
 		<li><?php echo($this->Html->link('ホーム', '/home')); ?></li>
-		<li><?php echo($this->Html->link('紹介', '/trpg_systems')); ?></li>
-		<li><?php echo($this->Html->link('ランキング', '/trpg_systems')); ?></li>
+		<li><?php echo($this->Html->link('紹介', '/trpg_systems?sort=introduction')); ?></li>
+		<li><?php echo($this->Html->link('ランキング', '/trpg_systems?sort=ranking')); ?></li>
 		<li><?php echo($this->Html->link('ニュース', '/news')); ?></li>
 	</ul>
 	<!-- ヘッダー ここまで -->
