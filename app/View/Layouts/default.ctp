@@ -57,11 +57,11 @@
 		<div class="left">
 			<div id="category_div">
 				<h2 id="category">カテゴリ</h2>
-				<a href="index.html">TRPG</a>
+				<?php echo($this->Html->link('TRPG', '/trpg_systems')); ?>
 				<ul id="category_items">
-					<li><a href="introduction_general.html">汎用</a></li>
-					<li><a href="introduction_fantasy.html">ファンタジー</a></li>
-					<li><a href="introduction_horror.html">ホラー</a></li>
+					<li><?php echo($this->Html->link('汎用', '/trpg_systems?category_id=1')); ?></li>
+					<li><?php echo($this->Html->link('ファンタジー', '/trpg_systems?category_id=2')); ?></li>
+					<li><?php echo($this->Html->link('ホラー', '/trpg_systems?category_id=3')); ?></li>
 				</ul>
 			</div>
 		</div>

@@ -29,16 +29,27 @@ class TrpgSystemsController extends AppController {
 	 * TRPGシステム一覧の取得。
 	 */
 	protected function getTrpgSystems() {
-		$sort = $this->request->query['sort'];
-		if ($sort == 'ranking') {
- 			$order = array('TrpgSystem.rank' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+		// URLパラメータがわたってこなかった場合を対処する。
+		// カテゴリとソートの組み合わせを対処する。
+		if (isset($this->request->query['sort'])) {
+			$sort = $this->request->query['sort'];
+			if ($sort == 'ranking') {
+	 			$order = array('TrpgSystem.rank' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+			} else {
+	 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+			}
+		}
+		$categoryId = $this->request->query['category_id'];
+		if (isset($categoryId)) {
+			$conditions = array('TrpgSystem.category_id' => $categoryId);
 		} else {
- 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+			$conditions = array('1' => '1');
 		}
 		$this->paginate = array(
 				'TrpgSystem' => array(
 					'order' => $order,
 					'limit' => 10,
+					'conditions' => $conditions,
 				)
 		);
 		$this->set('trpgSystems', $this->paginate('TrpgSystem'));

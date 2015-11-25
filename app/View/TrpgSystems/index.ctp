@@ -63,7 +63,7 @@
 					<?php echo $this->Paginator->prev('< 前へ'); ?>
 				</div>
 				<div class="paging_center">
-					<?php echo $this->Paginator->numbers(); ?>
+					<?php echo $this->Paginator->numbers(); ?>&nbsp;
 				</div>
 				<div class="paging_right">
 					<?php echo $this->Paginator->next('次へ >'); ?>
