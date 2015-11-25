@@ -34,17 +34,6 @@ class HomeController extends AppController {
 	}
 
 	/**
-	 * TRPGシステム一覧の取得
-	 */
-	protected function getTrpgSystems() {
-		$options = array(
-				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
-				'limit' => 5,
-		);
-		return $this->TrpgSystem->find('all', $options);
-	}
-
-	/**
 	 * ニュース一覧の取得
 	 */
 	protected function getNews() {
@@ -53,5 +42,16 @@ class HomeController extends AppController {
 				'limit' => 10,
 		);
 		return $this->News->find('all', $options);
+	}
+
+	/**
+	 * TRPGシステム一覧の取得
+	 */
+	protected function getTrpgSystems() {
+		$options = array(
+				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
+				'limit' => 5,
+		);
+		return $this->TrpgSystem->find('all', $options);
 	}
 }
