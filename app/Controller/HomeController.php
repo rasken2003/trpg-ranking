@@ -38,7 +38,7 @@ class HomeController extends AppController {
 	 */
 	protected function getTrpgSystems() {
 		$options = array(
-				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified ASC'),
+				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
 				'limit' => 5,
 		);
 		return $this->TrpgSystem->find('all', $options);
