@@ -1,28 +1,24 @@
 			<!-- センター -->
 			<div class="home_center">
 				<h2 id="news">ニュース</h2>
+				<?php foreach($news as $newsRec): ?>
 				<div class="home_news_item">
 					<div class="news_title">
-						<a href="news_detail_2.html">TRPGランキングの画面定義が終了！</a>
+						<?php
+							echo($this->Html->link(
+								$newsRec['News']['title'],
+								'/news/view/'.$newsRec['News']['id']
+							));
+						?>
 					</div>
 					<div class="news_summary">
-						TRPGランキングの企画を書き、画面定義が終了しました！
+						<?php echo($newsRec['News']['summary']); ?>
 					</div>
 					<div class="news_delivery_time">
-						2015/10/22 12:58
+						<?php echo($newsRec['News']['delivery_time']); ?>
 					</div>
 				</div>
-				<div class="home_news_item">
-					<div class="news_title">
-						<a href="news_detail.html">TRPGランキングの開発がスタート！</a>
-					</div>
-					<div class="news_summary">
-						TRPGランキングの開発がスタートしました！開発完了が待たれます！
-					</div>
-					<div class="news_delivery_time">
-						2015/10/21 14:46
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 			<!-- センター ここまで -->
 			<!-- ライト -->
