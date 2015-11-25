@@ -1,18 +1,18 @@
 <?php
 /**
- * トップページのコントローラー
+ * トップページのコントローラー。
  *
  * @author Hidemasa Aoki
  */
 class HomeController extends AppController {
 
 	/**
-	 * モデル：TRPGシステム
+	 * モデル：TRPGシステム。
 	 */
 	public $uses = array('News', 'TrpgSystem');
 
 	/**
-	 * 初期表示
+	 * 初期表示。
 	 */
 	public function index() {
 
@@ -24,7 +24,7 @@ class HomeController extends AppController {
 	}
 
 	/**
-	 * 画像取得
+	 * 画像取得。
 	 *
 	 * @param unknown $id ID
 	 */
@@ -34,7 +34,7 @@ class HomeController extends AppController {
 	}
 
 	/**
-	 * ニュース一覧の取得
+	 * ニュース一覧の取得。
 	 */
 	protected function getNews() {
 		$options = array(
@@ -45,7 +45,7 @@ class HomeController extends AppController {
 	}
 
 	/**
-	 * TRPGシステム一覧の取得
+	 * TRPGシステム一覧の取得。
 	 */
 	protected function getTrpgSystems() {
 		$options = array(
