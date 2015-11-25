@@ -12,7 +12,7 @@ class TrpgSystemsController extends AppController {
 	public function index() {
 
 		// TRPGシステム一覧の取得
-		$this->set('trpgSystems', $this->getTrpgSystems());
+		$this->getTrpgSystems();
 	}
 
 	/**
@@ -31,6 +31,6 @@ class TrpgSystemsController extends AppController {
 					'limit' => 10,
 				)
 		);
-		return $this->paginate('TrpgSystem');
+		$this->set('trpgSystems', $this->paginate('TrpgSystem'));
 	}
 }

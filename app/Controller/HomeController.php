@@ -17,10 +17,10 @@ class HomeController extends AppController {
 	public function index() {
 
 		// ニュース一覧の取得
-		$this->set('news', $this->getNews());
+		$this->getNews();
 
 		// TRPGシステム一覧の取得
-		$this->set('trpgSystems', $this->getTrpgSystems());
+		$this->getTrpgSystems();
 	}
 
 	/**
@@ -41,7 +41,7 @@ class HomeController extends AppController {
 				'order' => array('News.delivery_time DESC', 'News.modified DESC'),
 				'limit' => 10,
 		);
-		return $this->News->find('all', $options);
+		$this->set('news', $this->News->find('all', $options));
 	}
 
 	/**
@@ -52,6 +52,6 @@ class HomeController extends AppController {
 				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
 				'limit' => 5,
 		);
-		return $this->TrpgSystem->find('all', $options);
+		$this->set('trpgSystems', $this->TrpgSystem->find('all', $options));
 	}
 }
