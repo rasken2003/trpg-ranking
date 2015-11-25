@@ -9,7 +9,7 @@
 					<div class="trpg_image">
 						<?php
 							echo($this->Html->image(
-								'/home/image/'.$trpgSystem['TrpgSystem']['id'],
+								'/trpg_systems/image/'.$trpgSystem['TrpgSystem']['id'],
 								array(
 									'url' => '/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id'],
 									'width' => '100',
