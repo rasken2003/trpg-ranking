@@ -1,4 +1,8 @@
 			<h2 id="introduction">紹介</h2>
+			<div class="page_count">
+				<?php echo $this->Paginator->counter('ページ {:page} / {:pages}'); ?><br>
+				<?php echo $this->Paginator->counter('全{:count}件中 {:start}件目から{:end}件目（{:current}件）を表示中'); ?><br>
+			</div>
 			<?php foreach ($trpgSystems as $trpgSystem): ?>
 			<div class="trpg_item">
 				<div class="trpg_item_left">
@@ -53,3 +57,16 @@
 				</div>
 			</div>
 			<?php endforeach; ?>
+			<div class="paging">
+				<div class="paging_left">
+					<?php echo $this->Paginator->prev('<< 最初へ'); ?>
+					<?php echo $this->Paginator->prev('< 前へ'); ?>
+				</div>
+				<div class="paging_center">
+					<?php echo $this->Paginator->numbers(); ?>
+				</div>
+				<div class="paging_right">
+					<?php echo $this->Paginator->next('次へ >'); ?>
+					<?php echo $this->Paginator->next('最後へ >>'); ?>
+				</div>
+			</div>

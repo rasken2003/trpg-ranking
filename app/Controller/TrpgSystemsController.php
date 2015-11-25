@@ -19,11 +19,13 @@ class TrpgSystemsController extends AppController {
 	 * TRPGシステム一覧の取得。
 	 */
 	protected function getTrpgSystems() {
-		$options = array(
-//				'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
-				'order' => array('TrpgSystem.introduction_order ASC', 'TrpgSystem.modified DESC'),
-				'limit' => 5,
+		$this->paginate = array(
+				'TrpgSystem' => array(
+//					'order' => array('TrpgSystem.rank ASC', 'TrpgSystem.modified DESC'),
+					'order' => array('TrpgSystem.introduction_order ASC', 'TrpgSystem.modified DESC'),
+					'limit' => 10,
+				)
 		);
-		return $this->TrpgSystem->find('all', $options);
+		return $this->paginate('TrpgSystem');
 	}
 }
