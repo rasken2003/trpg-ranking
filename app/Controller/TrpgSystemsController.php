@@ -29,7 +29,6 @@ class TrpgSystemsController extends AppController {
 	 * TRPGシステム一覧の取得。
 	 */
 	protected function getTrpgSystems() {
-		// URLパラメータがわたってこなかった場合を対処する。
 		// カテゴリとソートの組み合わせを対処する。
 		if (isset($this->request->query['sort'])) {
 			$sort = $this->request->query['sort'];
@@ -38,19 +37,23 @@ class TrpgSystemsController extends AppController {
 			} else {
 	 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
 			}
-		}
-		$categoryId = $this->request->query['category_id'];
-		if (isset($categoryId)) {
-			$conditions = array('TrpgSystem.category_id' => $categoryId);
 		} else {
-			$conditions = array('1' => '1');
+			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+		}
+		if (isset($this->request->query['category_id'])) {
+			$categoryId = $this->request->query['category_id'];
+			$conditions = array('TrpgSystem.category_id' => $categoryId);
+		}
+		$trpgSystemArray = array();
+		if (isset($order)) {
+			$trpgSystemArray['order'] = $order;
+		}
+		$trpgSystemArray['limit'] = 10;
+		if (isset($conditions)) {
+			$trpgSystemArray['conditions'] = $conditions;
 		}
 		$this->paginate = array(
-				'TrpgSystem' => array(
-					'order' => $order,
-					'limit' => 10,
-					'conditions' => $conditions,
-				)
+				'TrpgSystem' => $trpgSystemArray
 		);
 		$this->set('trpgSystems', $this->paginate('TrpgSystem'));
 	}
