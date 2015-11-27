@@ -1,6 +1,6 @@
 <?php
 /**
- * TRPGシステムのコントローラー。
+ * ニュースのコントローラー。
  *
  * @author Hidemasa Aoki
  */
