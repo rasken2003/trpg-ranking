@@ -34,15 +34,21 @@ class TrpgSystemsController extends AppController {
 			$sort = $this->request->query['sort'];
 			if ($sort == 'ranking') {
 	 			$order = array('TrpgSystem.rank' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+	 			$subTitle = 'ランキング';
 			} else {
 	 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+	 			$subTitle = '紹介';
 			}
 		} else {
 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
+	 		$subTitle = '紹介';
 		}
 		if (isset($this->request->query['category_id'])) {
 			$categoryId = $this->request->query['category_id'];
 			$conditions = array('TrpgSystem.category_id' => $categoryId);
+		}
+		if (isset($subTitle)) {
+			$this->set("subTitle", $subTitle);
 		}
 		$trpgSystemArray = array();
 		if (isset($order)) {
