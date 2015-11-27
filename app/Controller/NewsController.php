@@ -27,4 +27,14 @@ class NewsController extends AppController {
 		);
 		$this->set('news', $this->paginate('News'));
 	}
+
+	/**
+	 * ニュース詳細の取得。
+	 *
+	 * @param unknown $id ID
+	 */
+	public function view($id) {
+		$newsRec = $this->News->findById($id);
+		$this->set('newsRec', $newsRec);
+	}
 }
