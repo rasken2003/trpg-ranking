@@ -29,7 +29,7 @@ class NewsController extends AppController {
 	}
 
 	/**
-	 * ニュース詳細の取得。
+	 * ニュース詳細の表示。
 	 *
 	 * @param unknown $id ID
 	 */
