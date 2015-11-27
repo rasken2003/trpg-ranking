@@ -53,7 +53,7 @@
 							<?php echo($trpgSystem['TrpgSystem']['summary']); ?>
 						</div>
 						<div class="trpg_category">
-							<a href="introduction_fantasy.html"><?php echo($trpgSystem['Category']['name']); ?></a>
+							<?php echo($this->Html->link($trpgSystem['Category']['name'], '/trpg_systems?&category_id='.$trpgSystem['Category']['id'])); ?>
 						</div>
 					</div>
 					<div class="home_trpg_item_right">

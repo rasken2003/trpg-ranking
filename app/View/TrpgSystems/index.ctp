@@ -1,3 +1,15 @@
+<?php
+	if (isset($categoryId)) {
+		$categoryIdCond = 'category_id='.$categoryId;
+	} else {
+		$categoryIdCond = '';
+	}
+	if (isset($sort)) {
+		$sortCond = 'sort='.$sort;
+	} else {
+		$sortCond = '';
+	}
+?>
 			<h2 id="introduction"><?php echo($subTitle); ?></h2>
 			<div class="page_count">
 				<?php echo $this->Paginator->counter('全{:count}件中 {:start}件目から{:end}件目（{:current}件）を表示中'); ?><br>
@@ -32,7 +44,7 @@
 						<?php echo($trpgSystem['TrpgSystem']['summary']); ?>
 					</div>
 					<div class="trpg_category">
-						<a href="introduction_fantasy.html"><?php echo($trpgSystem['Category']['name']); ?></a>
+						<?php echo($this->Html->link($trpgSystem['Category']['name'], '/trpg_systems?'.$sortCond.'&category_id='.$trpgSystem['Category']['id'])); ?>
 					</div>
 				</div>
 				<div class="trpg_item_right">
