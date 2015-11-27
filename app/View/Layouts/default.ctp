@@ -22,6 +22,9 @@
 		$sortCond = '';
 	}
 ?>
+<?php
+	$categories = $this->requestAction('categories/getList');
+?>
 <body>
 <div class="wrapper">
 	<!-- ヘッダー -->
@@ -71,9 +74,9 @@
 				<h2 id="category">カテゴリ</h2>
 				<?php echo($this->Html->link('TRPG', '/trpg_systems?'.$sortCond)); ?>
 				<ul id="category_items">
-					<li><?php echo($this->Html->link('汎用', '/trpg_systems?'.$sortCond.'&category_id=1')); ?></li>
-					<li><?php echo($this->Html->link('ファンタジー', '/trpg_systems?'.$sortCond.'&category_id=2')); ?></li>
-					<li><?php echo($this->Html->link('ホラー', '/trpg_systems?'.$sortCond.'&category_id=3')); ?></li>
+					<?php foreach ($categories as $category): ?>
+					<li><?php echo($this->Html->link($category['Category']['name'], '/trpg_systems?'.$sortCond.'&category_id='.$category['Category']['id'])); ?></li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
