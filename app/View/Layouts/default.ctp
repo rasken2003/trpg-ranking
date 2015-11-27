@@ -10,6 +10,18 @@
 	echo $this->Html->css('style');
 ?>
 </head>
+<?php
+	if (isset($categoryId)) {
+		$categoryIdCond = 'category_id='.$categoryId;
+	} else {
+		$categoryIdCond = '';
+	}
+	if (isset($sort)) {
+		$sortCond = 'sort='.$sort;
+	} else {
+		$sortCond = '';
+	}
+?>
 <body>
 <div class="wrapper">
 	<!-- ヘッダー -->
@@ -46,8 +58,8 @@
 	</div>
 	<ul id="nav">
 		<li><?php echo($this->Html->link('ホーム', '/home')); ?></li>
-		<li><?php echo($this->Html->link('紹介', '/trpg_systems?sort=introduction')); ?></li>
-		<li><?php echo($this->Html->link('ランキング', '/trpg_systems?sort=ranking')); ?></li>
+		<li><?php echo($this->Html->link('紹介', '/trpg_systems?sort=introduction&'.$categoryIdCond)); ?></li>
+		<li><?php echo($this->Html->link('ランキング', '/trpg_systems?sort=ranking&'.$categoryIdCond)); ?></li>
 		<li><?php echo($this->Html->link('ニュース', '/news')); ?></li>
 	</ul>
 	<!-- ヘッダー ここまで -->
@@ -57,11 +69,11 @@
 		<div class="left">
 			<div id="category_div">
 				<h2 id="category">カテゴリ</h2>
-				<?php echo($this->Html->link('TRPG', '/trpg_systems')); ?>
+				<?php echo($this->Html->link('TRPG', '/trpg_systems?'.$sortCond)); ?>
 				<ul id="category_items">
-					<li><?php echo($this->Html->link('汎用', '/trpg_systems?category_id=1')); ?></li>
-					<li><?php echo($this->Html->link('ファンタジー', '/trpg_systems?category_id=2')); ?></li>
-					<li><?php echo($this->Html->link('ホラー', '/trpg_systems?category_id=3')); ?></li>
+					<li><?php echo($this->Html->link('汎用', '/trpg_systems?'.$sortCond.'&category_id=1')); ?></li>
+					<li><?php echo($this->Html->link('ファンタジー', '/trpg_systems?'.$sortCond.'&category_id=2')); ?></li>
+					<li><?php echo($this->Html->link('ホラー', '/trpg_systems?'.$sortCond.'&category_id=3')); ?></li>
 				</ul>
 			</div>
 		</div>
