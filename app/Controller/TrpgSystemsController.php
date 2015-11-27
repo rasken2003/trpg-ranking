@@ -68,4 +68,15 @@ class TrpgSystemsController extends AppController {
 			$this->set('categoryId', $categoryId);
 		}
 	}
+
+	/**
+	 * TRPGシステム詳細の表示。
+	 *
+	 * @param unknown $id ID
+	 */
+	public function view($id) {
+		$this->TrpgSystem->bindModel(array('hasMany' => array('TrpgReview')));
+		$trpgSystem = $this->TrpgSystem->findById($id);
+		$this->set('trpgSystem', $trpgSystem);
+	}
 }
