@@ -23,7 +23,7 @@
 							echo($this->Html->image(
 								'/trpg_systems/image/'.$trpgSystem['TrpgSystem']['id'],
 								array(
-									'url' => '/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id'],
+									'url' => '/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id'].'?'.$sortCond.'&'.$categoryIdCond,
 									'width' => '100',
 									'alt' => $trpgSystem['TrpgSystem']['title'],
 								)
@@ -36,7 +36,7 @@
 						<?php
 							echo($this->Html->link(
 								$trpgSystem['TrpgSystem']['title'],
-								'/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id']
+								'/trpg_systems/view/'.$trpgSystem['TrpgSystem']['id'].'?'.$sortCond.'&'.$categoryIdCond
 							));
 						?>
 					</div>

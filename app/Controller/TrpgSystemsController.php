@@ -81,6 +81,14 @@ class TrpgSystemsController extends AppController {
 	 */
 	public function view($id) {
 
+		// ソート、カテゴリの引き継ぎ
+		if (isset($this->request->query['sort'])) {
+			$this->set('sort', $this->request->query['sort']);
+		}
+		if (isset($this->request->query['category_id'])) {
+			$this->set('categoryId', $this->request->query['category_id']);
+		}
+
 		// TRPGシステム詳細の取得
 		$this->getTrpgSystem($id);
 

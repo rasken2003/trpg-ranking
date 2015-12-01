@@ -1,10 +1,22 @@
+<?php
+	if (isset($categoryId)) {
+		$categoryIdCond = 'category_id='.$categoryId;
+	} else {
+		$categoryIdCond = '';
+	}
+	if (isset($sort)) {
+		$sortCond = 'sort='.$sort;
+	} else {
+		$sortCond = '';
+	}
+?>
 			<h2 id="review_detail">レビュー詳細</h2>
 			<div class="review_detail_item">
 				<div class="review_title">
 					<?php
 						echo($this->Html->link(
 							h($trpgReview['TrpgReview']['title']),
-							'/trpg_reviews/view/'.$trpgReview['TrpgReview']['id']
+							'/trpg_reviews/view/'.$trpgReview['TrpgReview']['id'].'?'.$sortCond.'&'.$categoryIdCond
 						));
 					?>
 				</div>

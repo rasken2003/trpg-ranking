@@ -13,6 +13,14 @@ class TrpgReviewsController extends AppController {
 	 */
 	public function view($id) {
 
+		// ソート、カテゴリの引き継ぎ
+		if (isset($this->request->query['sort'])) {
+			$this->set('sort', $this->request->query['sort']);
+		}
+		if (isset($this->request->query['category_id'])) {
+			$this->set('categoryId', $this->request->query['category_id']);
+		}
+
 		// TRPGレビュー詳細の取得
 		$this->getTrpgReview($id);
 	}
