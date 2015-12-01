@@ -7,6 +7,11 @@
 class TrpgReviewsController extends AppController {
 
 	/**
+	 * TRPG共通コンポーネント。
+	 */
+	public $components = array('TrpgCommon');
+
+	/**
 	 * TRPGレビュー詳細の表示。
 	 *
 	 * @param unknown $id ID
@@ -14,12 +19,7 @@ class TrpgReviewsController extends AppController {
 	public function view($id) {
 
 		// ソート、カテゴリの引き継ぎ
-		if (isset($this->request->query['sort'])) {
-			$this->set('sort', $this->request->query['sort']);
-		}
-		if (isset($this->request->query['category_id'])) {
-			$this->set('categoryId', $this->request->query['category_id']);
-		}
+		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// TRPGレビュー詳細の取得
 		$this->getTrpgReview($id);

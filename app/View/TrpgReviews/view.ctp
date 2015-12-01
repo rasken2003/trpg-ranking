@@ -1,15 +1,3 @@
-<?php
-	if (isset($categoryId)) {
-		$categoryIdCond = 'category_id='.$categoryId;
-	} else {
-		$categoryIdCond = '';
-	}
-	if (isset($sort)) {
-		$sortCond = 'sort='.$sort;
-	} else {
-		$sortCond = '';
-	}
-?>
 			<h2 id="review_detail">レビュー詳細</h2>
 			<div class="review_detail_item">
 				<div class="review_title">

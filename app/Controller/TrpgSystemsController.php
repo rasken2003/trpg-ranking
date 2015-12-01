@@ -7,14 +7,22 @@
 class TrpgSystemsController extends AppController {
 
 	/**
-	 * TRPGシステム、TRPGレビュー
+	 * TRPGシステムモデル、TRPGレビューモデル。
 	 */
 	public $uses = array('TrpgSystem', 'TrpgReview');
+
+	/**
+	 * TRPG共通コンポーネント。
+	 */
+	public $components = array('TrpgCommon');
 
 	/**
 	 * 初期表示。
 	 */
 	public function index() {
+
+		// ソート、カテゴリの引き継ぎ
+		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// TRPGシステム一覧の取得
 		$this->getTrpgSystems();
@@ -56,12 +64,6 @@ class TrpgSystemsController extends AppController {
 				'TrpgSystem' => $trpgSystemArray
 		);
 		$this->set('trpgSystems', $this->paginate('TrpgSystem'));
-		if (isset($sort)) {
-			$this->set('sort', $sort);
-		}
-		if (isset($categoryId)) {
-			$this->set('categoryId', $categoryId);
-		}
 	}
 
 	/**
@@ -82,12 +84,7 @@ class TrpgSystemsController extends AppController {
 	public function view($id) {
 
 		// ソート、カテゴリの引き継ぎ
-		if (isset($this->request->query['sort'])) {
-			$this->set('sort', $this->request->query['sort']);
-		}
-		if (isset($this->request->query['category_id'])) {
-			$this->set('categoryId', $this->request->query['category_id']);
-		}
+		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// TRPGシステム詳細の取得
 		$this->getTrpgSystem($id);

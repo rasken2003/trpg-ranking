@@ -1,15 +1,3 @@
-<?php
-	if (isset($categoryId)) {
-		$categoryIdCond = 'category_id='.$categoryId;
-	} else {
-		$categoryIdCond = '';
-	}
-	if (isset($sort)) {
-		$sortCond = 'sort='.$sort;
-	} else {
-		$sortCond = '';
-	}
-?>
 			<h2 id="trpg_detail">TRPG詳細</h2>
 			<div class="trpg_detail_item">
 				<div class="trpg_item_left">
