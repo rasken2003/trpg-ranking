@@ -112,7 +112,7 @@
 							'/trpg_reviews/view/'.$trpgReview['TrpgReview']['id']
 						));
 					?>
-					</div>
+				</div>
 				<div class="review_evaluation">
 					<div class="review_evaluation_image">
 						<?php
