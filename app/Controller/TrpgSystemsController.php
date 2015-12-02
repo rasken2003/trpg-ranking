@@ -12,17 +12,9 @@ class TrpgSystemsController extends AppController {
 	public $uses = array('TrpgSystem', 'TrpgReview');
 
 	/**
-	 * TRPG共通コンポーネント。
-	 */
-	public $components = array('TrpgCommon');
-
-	/**
 	 * 初期表示。
 	 */
 	public function index() {
-
-		// ソート、カテゴリの引き継ぎ
-		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// TRPGシステム一覧の取得
 		$this->getTrpgSystems();
@@ -82,9 +74,6 @@ class TrpgSystemsController extends AppController {
 	 * @param unknown $id ID
 	 */
 	public function view($id) {
-
-		// ソート、カテゴリの引き継ぎ
-		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// TRPGシステム詳細の取得
 		$this->getTrpgSystem($id);
