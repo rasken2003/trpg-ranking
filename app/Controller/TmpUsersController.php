@@ -4,6 +4,7 @@
  *
  * @author Hidemasa Aoki
  */
+App::uses('CakeEmail', 'Network/Email');
 class TmpUsersController extends AppController {
 
 	/**
@@ -44,6 +45,7 @@ class TmpUsersController extends AppController {
 				$activationCode = $this->TmpUser->getActivationHash();
 
 				// 認証メールを作成し、送信
+				$this->sendActivationMail($activationCode);
 
 				// 認証コードを保存
 				$this->TmpUser->saveField('activate_code', $activationCode);
@@ -53,5 +55,27 @@ class TmpUsersController extends AppController {
 				return;
 			}
 		}
+	}
+
+	/**
+	 * 認証メールを作成し、送信。
+	 */
+	protected function sendActivationMail($activationCode) {
+
+		// URL作成
+		$url =
+			'/'.'users'.						// コントローラ
+			'/'.'activate'.					// アクション
+			'/'.$this->TmpUser->id.			// ユーザID
+			'/'.$activationCode;				// ハッシュ値
+		$url = Router::url($url, true);		// ドメイン(+サブディレクトリ)を付与
+
+		// メール送信
+		$email = new CakeEmail('default');
+		$email->to($this->request->data['TmpUser']['email']);
+		$email->subject('【TRPGランキング】登録認証メール');
+		$email->template('activation_mail');
+		$email->viewVars(array('url' => $url));
+		$email->send();
 	}
 }
