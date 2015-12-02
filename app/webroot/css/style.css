@@ -63,7 +63,7 @@ h2 {
 #login {
 	margin: 0 0 0 0;
 /* 第1弾 */
-	visibility: hidden;
+//	visibility: hidden;
 }
 #login li {
 	list-style-type: none;
@@ -316,4 +316,8 @@ img {
 	float: left;
 	width: 200px;
 	text-align: center;
+}
+
+.message {
+	font-size: 15px;
 }

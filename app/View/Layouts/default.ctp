@@ -35,7 +35,7 @@
 		<div id="logo_login_right">
 			<ul id="login">
 				<li><a href="login.html">ログイン</a></li>
-				<li><a href="userregist.html">新規登録</a></li>
+				<li><?php echo($this->Html->link('新規登録', '/tmp_users/regist')); ?></li>
 			</ul>
 		</div>
 	</div>
