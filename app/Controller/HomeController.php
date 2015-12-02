@@ -12,9 +12,17 @@ class HomeController extends AppController {
 	public $uses = array('News', 'TrpgSystem');
 
 	/**
+	 * TRPG共通コンポーネント。
+	 */
+	public $components = array('TrpgCommon');
+
+	/**
 	 * 初期表示。
 	 */
 	public function index() {
+
+		// ソート、カテゴリの引き継ぎ
+		$this->TrpgCommon->transferSortAndCategoryCondition($this);
 
 		// ニュース一覧の取得
 		$this->getNews();

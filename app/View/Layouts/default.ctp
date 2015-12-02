@@ -11,18 +11,6 @@
 ?>
 </head>
 <?php
-	if (isset($categoryId)) {
-		$categoryIdCond = 'category_id='.$categoryId;
-	} else {
-		$categoryIdCond = '';
-	}
-	if (isset($sort)) {
-		$sortCond = 'sort='.$sort;
-	} else {
-		$sortCond = '';
-	}
-?>
-<?php
 	$categories = $this->requestAction('categories/getList');
 ?>
 <body>
