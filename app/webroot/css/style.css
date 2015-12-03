@@ -321,3 +321,17 @@ img {
 .message {
 	font-size: 15px;
 }
+.error-message {
+	font-size: 15px;
+	color: #ff0000;
+}
+
+/* ユーザ登録 */
+.user_table {
+	border-collapse: collapse;
+	margin: 10px 10px 10px 10px;
+}
+.user_table tr th, td {
+	border: 1px solid gray;
+	padding: 10px 10px 10px 10px;
+}

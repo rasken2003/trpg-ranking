@@ -42,13 +42,13 @@ class TmpUsersController extends AppController {
 				$result = $this->TmpUser->save();
 
 				// 認証コードを作成
-				$activationCode = $this->TmpUser->getActivationHash();
+				$activateCode = $this->TmpUser->getActivationHash();
 
 				// 認証メールを作成し、送信
-				$this->sendActivationMail($activationCode);
+				$this->sendActivationMail($activateCode);
 
 				// 認証コードを保存
-				$this->TmpUser->saveField('activate_code', $activationCode);
+				$this->TmpUser->saveField('activate_code', $activateCode);
 
 				// 認証メール送信成功画面に遷移
 				$this->render("success");
@@ -60,14 +60,14 @@ class TmpUsersController extends AppController {
 	/**
 	 * 認証メールを作成し、送信。
 	 */
-	protected function sendActivationMail($activationCode) {
+	protected function sendActivationMail($activateCode) {
 
 		// URL作成
 		$url =
 			'/'.'users'.						// コントローラ
 			'/'.'activate'.					// アクション
 			'/'.$this->TmpUser->id.			// ユーザID
-			'/'.$activationCode;				// ハッシュ値
+			'/'.$activateCode;				// ハッシュ値
 		$url = Router::url($url, true);		// ドメイン(+サブディレクトリ)を付与
 
 		// メール送信
