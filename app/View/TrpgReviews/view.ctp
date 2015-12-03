@@ -29,7 +29,7 @@
 					<?php echo(nl2br(h($trpgReview['TrpgReview']['contents']))); ?>
 				</div>
 				<div class="review_reviewer">
-					レビュアー：<?php echo(h($trpgReview['User']['username'])); ?>
+					レビュアー：<?php echo(h($trpgReview['User']['nickname'])); ?>
 				</div>
 				<div class="review_update_date">
 					更新日時：<?php echo($trpgReview['TrpgReview']['modified']); ?>
