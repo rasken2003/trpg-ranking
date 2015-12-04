@@ -9,7 +9,7 @@ class TrpgReviewsController extends AppController {
 	/**
 	 * コンポーネント：Auth。
 	 */
-	public $components = array('Auth');
+	public $components = array('Auth', 'Security');
 
 	/**
 	 * beforeFilter。
