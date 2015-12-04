@@ -13,9 +13,9 @@ class UsersController extends AppController {
 	public $uses = array('TmpUser', 'User');
 
 	/**
-	 * コンポーネント：セッション。
+	 * コンポーネント：Auth、セッション。
 	 */
-	public $components = array('Session');
+	public $components = array('Auth', 'Session');
 
 	/**
 	 * 認証。
@@ -85,5 +85,26 @@ class UsersController extends AppController {
 			$this->render('/Errors/message');
 			return;
 		}
+	}
+
+	/**
+	 * ログイン。
+	 */
+	public function login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirect());
+			} else {
+				$this->Session->setFlash('ログインに失敗しました。');
+			}
+		}
+	}
+
+	/**
+	 * ログアウト。
+	 */
+	public function logout() {
+		$this->Auth->logout();
+		return $this->redirect('/home');
 	}
 }

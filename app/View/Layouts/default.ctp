@@ -11,6 +11,7 @@
 ?>
 </head>
 <?php
+	App::uses('AuthComponent', 'Controller/Component');
 	$categories = $this->requestAction('categories/getList');
 ?>
 <body>
@@ -34,8 +35,12 @@
 		</div>
 		<div id="logo_login_right">
 			<ul id="login">
-				<li><a href="login.html">ログイン</a></li>
+				<?php if (is_null(AuthComponent::user())): ?>
+				<li><?php echo($this->Html->link('ログイン', '/users/login')); ?></li>
 				<li><?php echo($this->Html->link('新規登録', '/tmp_users/regist')); ?></li>
+				<?php else: ?>
+				<li><?php echo($this->Html->link('ログアウト', '/users/logout')); ?></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 	</div>
@@ -71,6 +76,7 @@
 		<!-- レフト ここまで -->
 		<!-- メイン -->
 		<div class="main">
+			<?php echo $this->Flash->render(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<!-- メイン ここまで -->
