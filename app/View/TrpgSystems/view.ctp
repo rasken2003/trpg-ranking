@@ -1,3 +1,6 @@
+<?php
+	App::uses('AuthComponent', 'Controller/Component');
+?>
 			<h2 id="trpg_detail">TRPG詳細</h2>
 			<div class="trpg_detail_item">
 				<div class="trpg_item_left">
@@ -86,6 +89,19 @@
 					?>
 				</div>
 			</div>
+			<?php if (!is_null(AuthComponent::user())): ?>
+			<h2 id="review">レビュー投稿・編集</h2>
+			<div style="text-align: center;">
+				<?php
+					echo($this->Html->link(
+						'レビュー投稿・編集',
+						'/trpg_reviews/update/'.$trpgSystem['TrpgSystem']['id'].'?'.$sortCond.'&'.$categoryIdCond
+					)); ?>
+			</div>
+			<div class="message" style="text-align: center;">
+				こちらから、レビューを投稿、編集できます。
+			</div>
+			<?php endif; ?>
 			<h2 id="review">レビュー</h2>
 			<div class="page_count">
 				<?php echo $this->Paginator->counter('全{:count}件中 {:start}件目から{:end}件目（{:current}件）を表示中'); ?><br>

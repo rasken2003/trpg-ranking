@@ -15,7 +15,7 @@ class UsersController extends AppController {
 	/**
 	 * コンポーネント：Auth、セッション。
 	 */
-	public $components = array('Auth', 'Session');
+	public $components = array('Auth');
 
 	/**
 	 * 認証。

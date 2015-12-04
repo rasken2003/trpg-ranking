@@ -335,3 +335,14 @@ img {
 	border: 1px solid gray;
 	padding: 10px 10px 10px 10px;
 }
+
+/* レビュー */
+.review_table {
+	border-collapse: collapse;
+	margin: 10px 10px 10px 10px;
+}
+.review_table tr th, td {
+	border: 1px solid gray;
+	padding: 10px 10px 10px 10px;
+	vertical-align: top;
+}
