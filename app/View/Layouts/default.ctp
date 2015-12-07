@@ -45,12 +45,24 @@
 		</div>
 	</div>
 	<div id="search">
-		<form method="GET" action="index.html">
+		<?php
+			echo($this->Form->create('TrpgSystems', array(
+				'type' => 'get',
+				'url' => '/trpg_systems/index'
+			)));
+		?>
 			<div>
-				<input type="text" name="searchkeyword" value="">
-				<input type="submit" id="search" name="search" value="検索">
+				<?php
+					echo($this->Form->text('search_keyword', array('size' => 50)));
+				?>
+				<?php
+					echo($this->Form->end(array(
+						'label' => '検索',
+						'id' => 'search',
+						'div' => false,
+					)))
+				?>
 			</div>
-		</form>
 	</div>
 	<ul id="nav">
 		<li><?php echo($this->Html->link('ホーム', '/home')); ?></li>

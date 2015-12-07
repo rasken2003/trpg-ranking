@@ -71,7 +71,7 @@ h2 {
 #search {
 	text-align: center;
 /* 第1弾 */
-	visibility: hidden;
+//	visibility: hidden;
 }
 input[name=searchkeyword] {
 	width: 30em;

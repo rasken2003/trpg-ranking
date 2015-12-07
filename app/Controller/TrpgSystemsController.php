@@ -24,6 +24,8 @@ class TrpgSystemsController extends AppController {
 	 * TRPGシステム一覧の取得。
 	 */
 	protected function getTrpgSystems() {
+
+		// ソート
 		if (isset($this->request->query['sort'])) {
 			$sort = $this->request->query['sort'];
 			if ($sort == 'ranking') {
@@ -37,13 +39,29 @@ class TrpgSystemsController extends AppController {
 			$order = array('TrpgSystem.introduction_order' => 'ASC', 'TrpgSystem.modified' => 'DESC');
 	 		$subTitle = '紹介';
 		}
+
+		// カテゴリID
 		if (isset($this->request->query['category_id'])) {
 			$categoryId = $this->request->query['category_id'];
-			$conditions = array('TrpgSystem.category_id' => $categoryId);
+			$conditions['TrpgSystem.category_id'] = $categoryId;
 		}
+
+		// 検索キーワード
+		if (isset($this->request->query['search_keyword'])) {
+			$searchKeyword = $this->request->query['search_keyword'];
+			$conditions['or'] = array(
+					'TrpgSystem.title like' => '%'.$searchKeyword.'%',
+					'TrpgSystem.contents like' => '%'.$searchKeyword.'%',
+			);
+			$this->request->data['TrpgSystems']['search_keyword'] = $searchKeyword;
+		}
+
+		// サブタイトルのセット
 		if (isset($subTitle)) {
 			$this->set("subTitle", $subTitle);
 		}
+
+		// 検索条件の設定
 		$trpgSystemArray = array();
 		if (isset($order)) {
 			$trpgSystemArray['order'] = $order;
@@ -55,6 +73,8 @@ class TrpgSystemsController extends AppController {
 		$this->paginate = array(
 				'TrpgSystem' => $trpgSystemArray
 		);
+
+		// 検索して、設定
 		$this->set('trpgSystems', $this->paginate('TrpgSystem'));
 	}
 
