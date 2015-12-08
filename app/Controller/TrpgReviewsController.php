@@ -62,12 +62,12 @@ class TrpgReviewsController extends AppController {
 			}
 			$result = $this->TrpgReview->save($data);
  			if ($result) {
- 				if (isset($this->request->data['TrpgReview']['sort'])) {
+ 				if (!$this->is_empty($this->request->data['TrpgReview']['sort'])) {
  					$sortCond = 'sort='.$this->request->data['TrpgReview']['sort'];
  				} else {
  					$sortCond = '';
  				}
- 				if (isset($this->request->data['TrpgReview']['category_id'])) {
+ 				if (!$this->is_empty($this->request->data['TrpgReview']['category_id'])) {
  					$categoryIdCond = 'category_id='.$this->request->data['TrpgReview']['category_id'];
  				} else {
  					$categoryIdCond = '';
@@ -105,6 +105,18 @@ class TrpgReviewsController extends AppController {
 				$trpgReview['TrpgReview']['category_id'] = '';
 			}
 			$this->request->data = $trpgReview;
+		}
+	}
+
+	/**
+	 * 空かどうか。
+	 * @param unknown $var 値
+	 */
+	protected function is_empty($var) {
+		if (isset($var) && $var != '') {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }
