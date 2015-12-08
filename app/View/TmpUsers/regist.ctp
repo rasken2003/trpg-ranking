@@ -4,7 +4,7 @@
 	メールアドレスを入力してください。入力されたメールアドレス宛に TRPGランキング の登録認証メールが送信されます。<br>
 	TRPGランキングにユーザ登録すると、TRPGを評価、レビューできるようになります。<br>
 </p>
-<table>
+<table class="user_table">
 	<tr>
 		<th>
 			<?php echo($this->Form->label('email', 'メールアドレス')); ?>
@@ -16,9 +16,15 @@
 	</tr>
 	<tr>
 		<th>
+			<?php echo($this->Form->label('captcha', 'キャプチャコード')); ?>
 		</th>
-		<td style="text-align: center;">
-			<?php echo($this->Form->end('送信')); ?>
+		<td>
+			<?php echo($this->Html->image('/tmp_users/captcha')); ?><br>
+			<?php echo($this->Form->text('captcha', array('size' => '30'))); ?>
+			<?php echo($this->Form->error('captcha')); ?>
 		</td>
 	</tr>
 </table>
+<div style="width:500px; text-align: center;">
+	<?php echo($this->Form->end('送信')); ?>
+</div>
