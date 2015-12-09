@@ -101,6 +101,13 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
+	public $twitter = array(
+		'datasource' => 'TwitterKit.TwitterSource',
+		'oauth_consumer_key'    => 'QLT1uitPM2EA4hKjh9fMnl1Gi',
+		'oauth_consumer_secret' => 'srcMMprM6cHQ7z9lcizrXIaAKN1OjdO2blxK2B30Uhw1IOJasx',
+		'oauth_callback'    => '/users/twitter_oauth_callback',
+	);
+
 	public function __construct() {
 		$serverName = $_SERVER['SERVER_NAME'];
 		switch ($serverName) {

@@ -13,9 +13,18 @@ class UsersController extends AppController {
 	public $uses = array('TmpUser', 'User');
 
 	/**
-	 * コンポーネント：Auth、セッション。
+	 * コンポーネント：Auth、TwitterKit。
 	 */
-	public $components = array('Auth');
+	public $components = array('Auth', 'TwitterKit.Twitter');
+
+	/**
+	 * beforeFilter。
+	 * @see Controller::beforeFilter()
+	 */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('twitter_login', 'twitter_oauth_callback');
+	}
 
 	/**
 	 * 認証。
@@ -106,5 +115,70 @@ class UsersController extends AppController {
 	public function logout() {
 		$this->Auth->logout();
 		return $this->redirect('/home');
+	}
+
+	/**
+	 * Twitterログイン。
+	 */
+	public function twitter_login() {
+		$this->Twitter->setTwitterSource('twitter');
+		return $this->redirect($this->Twitter->getAuthenticateUrl(null, true));
+	}
+
+	/**
+	 * Twitterコールバック。
+	 */
+	public function twitter_oauth_callback() {
+
+		// 認証が実施されずにリダイレクト先から遷移してきた場合の処理
+		if(!$this->Twitter->isRequested()) {
+			$this->flash(__('invalid access.'), '/', 5);
+			return;
+		}
+
+		// アクセストークンの取得を実施
+		$this->Twitter->setTwitterSource('twitter');
+		$token = $this->Twitter->getAccessToken();
+
+		// ユーザ登録
+		$data = $this->twitter_signin($token);
+
+		// CakePHPのAuthログイン処理
+		$this->Auth->login($data);
+
+		// ログイン後画面へリダイレクト
+		return $this->redirect($this->Auth->redirect());
+	}
+
+	/**
+	 * Twitterユーザ登録。
+	 */
+	protected function twitter_signin($token) {
+
+		// 入力チェックの設定
+		$this->User->$validate = array(
+				'username' => array(
+						'rule' => 'isUnique',
+						'message' => '重複です'
+				),
+		);
+
+		//アクセストークンを正しく取得できなかった場合はエラー
+		if (is_string($token)) {
+			return;
+		}
+
+		// データ編集
+		$data['User']['username'] = $token['user_id'];
+		$data['User']['nickname'] = $token['screen_name'];
+		$data['User']['password'] = Security::hash($token['oauth_token']);
+
+		//バリデーションチェックでエラーがなければ、新規登録
+		if ($this->User->validates()) {
+			$this->User->save($data);
+		}
+
+		// ユーザ情報を返却
+		return $data;
 	}
 }
