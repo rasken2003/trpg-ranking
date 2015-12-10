@@ -97,6 +97,46 @@ class UsersController extends AppController {
 	}
 
 	/**
+	 * ユーザ変更。
+	 */
+	public function edit() {
+
+		// POSTされたときのみ処理する。
+		// ユーザ情報を変更する。
+		if ($this->request->is('post')) {
+			$data['User']['id'] = $this->request->data['User']['id'];
+			$data['User']['username'] = $this->request->data['User']['username'];
+			$data['User']['nickname'] = $this->request->data['User']['nickname'];
+			$data['User']['password'] = $this->request->data['User']['password'];
+			$data['User']['password_confirm'] = $this->request->data['User']['password_confirm'];
+			$this->User->set($data);
+			$errors = $this->User->invalidFields();
+			if (count($errors) > 0) {
+				return;
+			}
+			$passwordHasher = new SimplePasswordHasher();
+			$data['User']['password'] = $passwordHasher->hash($data['User']['password']);
+			$result = $this->User->save($data, array('validate' => false));
+			if ($result) {
+				$this->Auth->login($result['User']);
+				$this->Session->setFlash('ユーザ情報を変更しました。');
+				return $this->redirect('/home');
+			} else {
+				$this->set('message', '変更に失敗しました。<br>');
+				$this->render('/Errors/message');
+				return;
+			}
+		}
+		// POSTではなかったときは、ユーザ情報を取得する。
+		else {
+			$result = $this->User->findById($this->Auth->user('id'));
+			$result['User']['password'] = '';
+			$this->request->data = $result;
+			return;
+		}
+	}
+
+	/**
 	 * ログイン。
 	 */
 	public function login() {

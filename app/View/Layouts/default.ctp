@@ -50,6 +50,7 @@
 				<li><?php echo($this->Html->link('新規登録', '/tmp_users/regist')); ?></li>
 				<?php else: ?>
 				<li><div class="message"><?php echo(AuthComponent::user('nickname')); ?>さん</div></li>
+				<li><?php echo($this->Html->link('ユーザ設定', '/users/edit')); ?></li>
 				<li><?php echo($this->Html->link('ログアウト', '/users/logout')); ?></li>
 				<?php endif; ?>
 			</ul>

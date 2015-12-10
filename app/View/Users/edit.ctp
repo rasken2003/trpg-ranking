@@ -1,20 +1,17 @@
-<h2 id="users_add">新規登録</h2>
-<?php echo $this->Form->create('User', array('type' => 'post', 'url' => 'add')); ?>
+<h2 id="users_edit">ユーザ設定</h2>
+<?php echo $this->Form->create('User', array('type' => 'post', 'url' => 'edit')); ?>
 <p class="message">
-	メールアドレスは認証されました。<br>
-	ユーザ情報を登録してください。<br>
+	ユーザ情報を変更できます。<br>
 </p>
+<?php echo($this->Form->hidden('id')); ?>
+<?php echo($this->Form->hidden('username')); ?>
 <table class="user_table">
 	<tr>
 		<th>
 			<?php echo($this->Form->label('username', 'ユーザ名')); ?>
 		</th>
 		<td>
-			<?php echo($this->Form->text('username', array('size' => '10', 'maxlength' => '100'))); ?>
-			<p class="message">
-				半角英数で10文字までです。<br>
-			</p>
-			<?php echo($this->Form->error('username')); ?>
+			<?php echo($this->request->data['User']['username']); ?>
 		</td>
 	</tr>
 	<tr>
@@ -55,5 +52,5 @@
 	</tr>
 </table>
 <div style="text-align: center;">
-	<?php echo($this->Form->end('登録')); ?>
+	<?php echo($this->Form->end('変更')); ?>
 </div>
