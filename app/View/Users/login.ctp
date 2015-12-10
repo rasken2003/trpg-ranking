@@ -26,3 +26,6 @@
 <div style="width:300px; text-align: center; margin: 10px 0 10px 0;">
 	<?php echo($this->Html->link('Twitterでログイン', '/users/twitter_login')); ?>
 </div>
+<div style="width:300px; text-align: center; margin: 10px 0 10px 0;">
+	<?php echo($this->Html->link('Facebookでログイン', '/users/facebook')); ?>
+</div>

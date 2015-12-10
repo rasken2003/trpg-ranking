@@ -5,6 +5,7 @@
  * @author Hidemasa Aoki
  */
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+App::import('Vendor','facebook',array('file' => 'facebook/src/facebook.php'));
 class UsersController extends AppController {
 
 	/**
@@ -23,7 +24,7 @@ class UsersController extends AppController {
 	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('twitter_login', 'twitter_oauth_callback');
+		$this->Auth->allow('twitter_login', 'twitter_oauth_callback', 'facebook');
 	}
 
 	/**
@@ -212,6 +213,79 @@ class UsersController extends AppController {
 		$data['User']['username'] = $token['user_id'];
 		$data['User']['nickname'] = $token['screen_name'];
 		$data['User']['password'] = Security::hash($token['oauth_token']);
+
+		//バリデーションチェックでエラーがなければ、新規登録
+		if ($this->User->validates()) {
+			$this->User->save($data);
+		}
+
+		// ユーザ情報を返却
+		return $data;
+	}
+
+	/**
+	 * Facebookログイン＆コールバック。
+	 */
+	public function facebook(){
+
+		// App IDとApp Secretを取得。
+		$this->facebook = $this->createFacebook();
+
+		// ユーザ情報
+		$user = $this->facebook->getUser();
+
+		// 認証後（コールバック）
+		if ($user) {
+
+			// ユーザ情報を取得
+			$me = $this->facebook->api('/me','GET',array('locale'=>'ja_JP'));
+
+			// ユーザ登録
+			$data = $this->facebook_signin($me);
+
+			// CakePHPのAuthログイン処理
+			$this->Auth->login($data);
+
+			// ログイン後画面へリダイレクト
+			return $this->redirect($this->Auth->redirect());
+		}
+		// 認証前（Facebookログインへ飛ぶ）
+		else {
+			$url = $this->facebook->getLoginUrl(array(
+			'scope' => 'email,publish_stream,user_birthday','canvas' => 1,'fbconnect' => 0));
+			return $this->redirect($url);
+		}
+	}
+
+	/**
+	 * App IDとApp Secretを返却。
+	 *
+	 * @return Facebook
+	 */
+	protected function createFacebook() {
+		return new Facebook(array(
+			'appId' => '1657673334472005',
+			'secret' => '8a7c8c0d664cdb0a55cc3c93a0e4c05a'
+		));
+	}
+
+	/**
+	 * Facebookユーザ登録。
+	 */
+	protected function facebook_signin($me) {
+
+		// 入力チェックの設定
+		$this->User->$validate = array(
+				'username' => array(
+						'rule' => 'isUnique',
+						'message' => '重複です'
+				),
+		);
+
+		// データ編集
+		$data['User']['username'] = $me['id'];
+		$data['User']['nickname'] = $me['name'];
+		$data['User']['password'] = '';
 
 		//バリデーションチェックでエラーがなければ、新規登録
 		if ($this->User->validates()) {
