@@ -326,6 +326,14 @@ img {
 	color: #ff0000;
 }
 
+/* ホーム */
+.home_news_more {
+	text-align: right;
+}
+.home_trpg_more {
+	text-align: right;
+}
+
 /* ユーザ登録 */
 .user_table {
 	border-collapse: collapse;

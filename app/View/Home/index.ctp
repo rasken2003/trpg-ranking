@@ -19,6 +19,9 @@
 					</div>
 				</div>
 				<?php endforeach; ?>
+				<div class="home_news_more">
+					<?php echo($this->Html->link('もっと見る', '/news')); ?>
+				</div>
 			</div>
 			<!-- センター ここまで -->
 			<!-- ライト -->
@@ -78,5 +81,8 @@
 					</div>
 				</div>
 				<?php endforeach; ?>
+				<div class="home_trpg_more">
+					<?php echo($this->Html->link('もっと見る', '/trpg_systems?sort=ranking')); ?>
+				</div>
 			</div>
 			<!-- ライト ここまで -->
