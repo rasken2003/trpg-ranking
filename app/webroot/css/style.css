@@ -326,6 +326,10 @@ img {
 	color: #ff0000;
 }
 
+#contact {
+	text-align: right;
+}
+
 /* ホーム */
 .home_news_more {
 	text-align: right;
