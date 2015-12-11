@@ -24,6 +24,9 @@
 	<?php echo($this->Form->end('ログイン')); ?>
 </div>
 <div style="width:300px; text-align: center; margin: 10px 0 10px 0;">
+	<?php echo($this->Html->link('新規登録', '/tmp_users/regist')); ?>
+</div>
+<div style="width:300px; text-align: center; margin: 10px 0 10px 0;">
 	<?php echo($this->Html->link('Twitterでログイン', '/users/twitter_login')); ?>
 </div>
 <div style="width:300px; text-align: center; margin: 10px 0 10px 0;">
