@@ -325,10 +325,12 @@ img {
 	font-size: 15px;
 	color: #ff0000;
 }
-
 #contact {
 	text-align: right;
 	margin: 10px 0 10px 0;
+}
+#footer {
+	text-align: center;
 }
 
 /* ホーム */
